@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    function getComputerChoice () {
+        const choices = ["rock", "paper", "scissor"];
+        let random = choices[Math.floor(Math.random() * 3)];
+        return random;
+    }
+    function playRound (playerSelection, computerSelection) {
+        if (playerSelection.toLowerCase() != "rock" && playerSelection.toLowerCase() != "scissor" && playerSelection.toLowerCase() != "paper") {
+            return "???"
+        }
+        if (playerSelection.toLowerCase() === "rock") {
+            if (computerSelection === "rock") {
+                return "It's a tie!"
+            } else if (computerSelection === "paper") {
+                return "You Lose!"
+            } else {
+                return "You Win!"
+            }
+        } else if (playerSelection.toLowerCase() === "scissor") {
+            if (computerSelection === "scissor") {
+                return "It's a tie!"
+            } else if (computerSelection === "rock") {
+                return "You Lose!"
+            } else {
+                return "You Win!"
+            }
+        } else {
+            if (computerSelection === "paper") {
+                return "It's a tie!"
+            } else if (computerSelection === "scissor") {
+                return "You Lose!"
+            } else {
+                return "You Win!"
+            }
+        }
+    }
+
+    function game () {
+        let win = 0;
+        let lose = 0;
+        let tie = 0;
+        let result = ""
+        for (let i = 0; i < 5; i++) {
+            if (i === 0) {
+                let playerSelection = prompt("Rock, Paper, or Scissor?");
+                let computerSelection = getComputerChoice();
+                if (playRound(playerSelection, computerSelection) === "???") {
+                    return "Error: Not a valid choice o.O"
+                }
+                if (playRound(playerSelection, computerSelection) === "You Lose!") {
+                    lose++;
+                    result = "You Lost! Next Round!"
+                } else if (playRound(playerSelection, computerSelection) === "You Win!") {
+                    win++;
+                    result = "You Win! Next Round!"
+                } else if (playRound(playerSelection, computerSelection) === "It's a tie!") {
+                    tie++;
+                    result = "It's a tie! Try Again!"
+                }
+            } else {
+                let playerSelection = prompt(result + " Round : " + String(Number(i) + 1));
+                let computerSelection = getComputerChoice();
+                if (playRound(playerSelection, computerSelection) === "???") {
+                    return "Error: Not a valid choice o.O"
+                }
+                if (playRound(playerSelection, computerSelection) === "You Lose!") {
+                    lose++;
+                    result = "You Lost! Next Round!"
+                } else if (playRound(playerSelection, computerSelection) === "You Win!") {
+                    win++;
+                    result = "You Win! Next Round!"
+                } else if (playRound(playerSelection, computerSelection) === "It's a tie!") {
+                    tie++;
+                    result = "It's a tie! Try Again!"
+                }
+            }
+        }
+        return [{"Win": win, "Lose": lose, "Tie": tie}]
+    }
+    console.log(game());
+</script>
+</html>
