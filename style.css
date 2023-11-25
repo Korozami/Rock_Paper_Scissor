@@ -1,0 +1,21 @@
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 400px;
+    margin-bottom: 20px;
+
+}
+
+.choice {
+    margin-left: 20px;
+    padding: 10px 50px;
+}
+
+.content {
+    font-weight: bold;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
